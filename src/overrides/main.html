@@ -1,16 +1,13 @@
 <!--
   Copyright (c) 2016-2020 Martin Donath <martin.donath@squidfunk.com>
-
   Permission is hereby granted, free of charge, to any person obtaining a copy
   of this software and associated documentation files (the "Software"), to
   deal in the Software without restriction, including without limitation the
   rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
   sell copies of the Software, and to permit persons to whom the Software is
   furnished to do so, subject to the following conditions:
-
   The above copyright notice and this permission notice shall be included in
   all copies or substantial portions of the Software.
-
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
   FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
@@ -36,9 +33,21 @@
 
   <!-- Open graph meta tags -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="WPS Student Body" />
-  <meta property="og:description" content="The WPS Student Body website." />
+  <meta property="og:title" content="{{ title }}" />
+  <meta property="og:description" content="{{ config.site_description }}" />
+  <meta property="og:url" content="{{ page.canonical_url }}" />
+  <meta property="og:image" content="{{ image }}" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1080" />
+  <meta property="og:image:height" content="568" />
 
+  <!-- Twitter meta tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@squidfunk" />
+  <meta name="twitter:creator" content="@squidfunk" />
+  <meta name="twitter:title" content="{{ title }}" />
+  <meta name="twitter:description" content="{{ config.site_description }}" />
+  <meta name="twitter:image" content="{{ image }}" />
 
   <!-- Extra stylesheets -->
   <link
@@ -49,12 +58,35 @@
 
 <!-- Announcement bar -->
 {% block announce %}
-    <a href ="https://github.com/wps-student-body/wps-student-body.github.io">The WPS Student Body website is now online.</a>
+  <a href="https://twitter.com/squidfunk">
+    For updates follow <strong>@squidfunk</strong> on
+    <span class="twemoji twitter">
+      {% include ".icons/fontawesome/brands/twitter.svg" %}
+    </span>
+    <strong>Twitter</strong>
+  </a>
 {% endblock %}
 
 <!-- Content -->
 {% block content %}
   {{ super() }}
+
+  <!-- Content footer -->
+  <footer class="tx-content__footer md-typeset">
+    <a href="{{ 'insiders/' | url }}" title="Material for MkDocs Insiders">
+      <hr />
+      <span class="twemoji">
+        {% include ".icons/logo.svg" %}
+      </span>
+      <span class="twemoji">
+        {% include ".icons/material/plus.svg" %}
+      </span>
+      <span class="twemoji tx-heart">
+        {% include ".icons/octicons/heart-fill-24.svg" %}
+      </span>
+      <hr />
+    </a>
+  </footer>
 {% endblock %}
 
 <!-- Analytics -->
